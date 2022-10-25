@@ -12,3 +12,6 @@ commands:
   mma:
     description: Murder mystery command
     usage: /<command>
+permissions:
+  mm.admin:
+    description: Gives access to all Kit commands.

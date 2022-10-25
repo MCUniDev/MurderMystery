@@ -17,7 +17,7 @@ public class AdminCommands implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         Player player = (Player) commandSender;
-        if (player.hasPermission("kit.events")) {
+        if (player.hasPermission("mm.admin")) {
             if (command.getName().equalsIgnoreCase("mma")) {
                 if (args.length > 0) {
                     if ("list".equals(args[0])) {
