@@ -1,0 +1,7 @@
+name: Murdermystery
+version: '${project.version}'
+main: org.mcuni.murdermystery.Murdermystery
+api-version: 1.19
+prefix: MurderMystery
+description: A temporary murder mystery plugin.
+website: https://mcuni.org
