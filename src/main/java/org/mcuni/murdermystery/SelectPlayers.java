@@ -12,11 +12,11 @@ public class SelectPlayers {
 
     public String SelectDetective() {
         Random rand = new Random();
-        return this.plugin.Players.get(rand.nextInt(this.plugin.Players.size()));
+        return plugin.Players.get(rand.nextInt(this.plugin.Players.size()));
     }
 
     public String SelectMurderer() {
         Random rand = new Random();
-        return this.plugin.Players.get(rand.nextInt(this.plugin.Players.size()));
+        return plugin.Players.get(rand.nextInt(this.plugin.Players.size()));
     }
 }

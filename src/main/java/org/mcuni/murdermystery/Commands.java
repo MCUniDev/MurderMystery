@@ -17,14 +17,14 @@ public class Commands implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("mm")) {
             if (args.length > 0) {
                 if ("join".equals(args[0])) {
-                    this.plugin.Players.add(commandSender.getName());
+                    plugin.Players.add(commandSender.getName());
                     commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Joined MurderMystery game.");
                 } else if ("leave".equals(args[0])) {
-                    this.plugin.Players.remove(commandSender.getName());
+                    plugin.Players.remove(commandSender.getName());
                     commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Left MurderMystery game.");
                 }
             } else {
-                commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Running MurderMystery version "+this.plugin.getDescription().getVersion()+" by MCUni.");
+                commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Running MurderMystery version "+plugin.getDescription().getVersion()+" by MCUni.");
             }
             return true;
         }
