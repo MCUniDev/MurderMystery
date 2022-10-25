@@ -13,7 +13,7 @@ public final class Murdermystery extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Bukkit.getLogger().info("Starting MurderMystery by MCUni.");
+        Bukkit.getLogger().info("[MurderMystery] Starting MurderMystery by MCUni.");
         loadCommands();
     }
 
@@ -25,9 +25,10 @@ public final class Murdermystery extends JavaPlugin {
             this.getCommand("mm").setExecutor(new Commands(this));
             this.getCommand("mma").setExecutor(new AdminCommands(this));
         } catch (NullPointerException e) {
-            Bukkit.getLogger().severe("ERROR: Couldn't enable commands.");
+            Bukkit.getLogger().severe("[MurderMystery] ERROR: Couldn't enable commands.");
+            Bukkit.getLogger().severe(String.valueOf(e));
         }
-        Bukkit.getLogger().info("Registered Command Executors.");
+        Bukkit.getLogger().info("[MurderMystery] Registered Command Executors.");
     }
 
     @Override

@@ -5,3 +5,10 @@ api-version: 1.19
 prefix: MurderMystery
 description: A temporary murder mystery plugin.
 website: https://mcuni.org
+commands:
+  mm:
+    description: Murder mystery command
+    usage: /<command>
+  mma:
+    description: Murder mystery command
+    usage: /<command>
