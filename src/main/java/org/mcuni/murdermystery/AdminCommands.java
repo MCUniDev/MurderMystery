@@ -8,8 +8,8 @@ import org.bukkit.command.CommandSender;
 public class AdminCommands implements CommandExecutor {
 
     public Murdermystery plugin;
-    public AdminCommands(Murdermystery murdermystery) {
-        this.plugin = murdermystery;
+    public AdminCommands(Murdermystery plugin) {
+        this.plugin = plugin;
     }
 
     @Override
@@ -17,12 +17,12 @@ public class AdminCommands implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("mma")) {
             if (args.length > 0) {
                 if ("list".equals(args[0])) {
-                    for (String player : this.plugin.Players) {
+                    for (String player : plugin.Players) {
                         commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " "+player);
                     }
                 }
             } else {
-                commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Running MurderMystery version "+this.plugin.getDescription().getVersion()+" by MCUni.");
+                commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Running MurderMystery version "+plugin.getDescription().getVersion()+" by MCUni.");
             }
             return true;
         }

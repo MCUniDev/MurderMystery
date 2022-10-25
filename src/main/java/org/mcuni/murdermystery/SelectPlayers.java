@@ -6,8 +6,8 @@ public class SelectPlayers {
 
     public Murdermystery plugin;
 
-    public SelectPlayers(Murdermystery murdermystery) {
-        this.plugin = murdermystery;
+    public SelectPlayers(Murdermystery plugin) {
+        this.plugin = plugin;
     }
 
     public String SelectDetective() {

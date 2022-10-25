@@ -8,8 +8,8 @@ import org.bukkit.command.CommandSender;
 public class Commands implements CommandExecutor {
 
     public Murdermystery plugin;
-    public Commands(Murdermystery murdermystery) {
-        this.plugin = murdermystery;
+    public Commands(Murdermystery plugin) {
+        this.plugin = plugin;
     }
 
     @Override

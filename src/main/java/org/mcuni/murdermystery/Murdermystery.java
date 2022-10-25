@@ -3,11 +3,12 @@ package org.mcuni.murdermystery;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class Murdermystery extends JavaPlugin {
 
-    public List<String> Players;
+    public List<String> Players = new ArrayList<>();
     public String Murderer;
     public String Detective;
 
