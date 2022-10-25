@@ -5,23 +5,21 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class Commands implements CommandExecutor {
+public class AdminCommands implements CommandExecutor {
 
     public Murdermystery plugin;
-    public Commands(Murdermystery murdermystery) {
+    public AdminCommands(Murdermystery murdermystery) {
         this.plugin = murdermystery;
     }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-        if (command.getName().equalsIgnoreCase("mm")) {
+        if (command.getName().equalsIgnoreCase("mma")) {
             if (args.length > 0) {
-                if ("join".equals(args[0])) {
-                    this.plugin.Players.add(commandSender.getName());
-                    commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Joined MurderMystery game.");
-                } else if ("leave".equals(args[0])) {
-                    this.plugin.Players.remove(commandSender.getName());
-                    commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Left MurderMystery game.");
+                if ("list".equals(args[0])) {
+                    for (String player : this.plugin.Players) {
+                        commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " "+player);
+                    }
                 }
             } else {
                 commandSender.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Running MurderMystery version "+this.plugin.getDescription().getVersion()+" by MCUni.");

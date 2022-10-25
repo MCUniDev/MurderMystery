@@ -8,6 +8,8 @@ import java.util.List;
 public final class Murdermystery extends JavaPlugin {
 
     public List<String> Players;
+    public String Murderer;
+    public String Detective;
 
     @Override
     public void onEnable() {
@@ -21,6 +23,7 @@ public final class Murdermystery extends JavaPlugin {
     private void loadCommands() {
         try {
             this.getCommand("mm").setExecutor(new Commands(this));
+            this.getCommand("mma").setExecutor(new AdminCommands(this));
         } catch (NullPointerException e) {
             Bukkit.getLogger().severe("ERROR: Couldn't enable commands.");
         }
