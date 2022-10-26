@@ -1,3 +1,9 @@
+/*
+TODO:
+- Player doesn't drop items on death.
+- New detective is selected IF there's enough players.
+ */
+
 package org.mcuni.murdermystery;
 
 import org.bukkit.Bukkit;
@@ -5,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mcuni.murdermystery.commands.AdminCommands;
 import org.mcuni.murdermystery.commands.Commands;
+import org.mcuni.murdermystery.events.PlayerDeath;
 import org.mcuni.murdermystery.events.PlayerQuit;
 
 import java.util.ArrayList;
@@ -12,11 +19,13 @@ import java.util.List;
 
 public final class Murdermystery extends JavaPlugin {
 
-    public List<String> Players = new ArrayList<>();
-    public String Murderer;
-    public String Detective;
+    public List<Player> Players = new ArrayList<>();
+    public Player Murderer;
+    public Player Detective;
+    public boolean GameRunning = false;
 
     public PlayerQuit PlayerQuitClass = new PlayerQuit(this);
+    public PlayerDeath PlayerDeathClass = new PlayerDeath(this);
 
     @Override
     public void onEnable() {
@@ -30,6 +39,7 @@ public final class Murdermystery extends JavaPlugin {
      */
     private void loadEventHandlers() {
         Bukkit.getServer().getPluginManager().registerEvents(PlayerQuitClass, this);
+        Bukkit.getServer().getPluginManager().registerEvents(PlayerDeathClass, this);
         Bukkit.getLogger().info("[MurderMystery] Registered Event Handlers.");
     }
 

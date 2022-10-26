@@ -20,14 +20,16 @@ public class Commands implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("mm")) {
             if (args.length > 0) {
                 if ("join".equals(args[0])) {
-                    plugin.Players.add(player.getName());
-                    player.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Joined MurderMystery game.");
+                    plugin.Players.add(player);
+                    player.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.WHITE + " Joined MurderMystery game.");
                 } else if ("leave".equals(args[0])) {
-                    plugin.Players.remove(player.getName());
-                    player.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Left MurderMystery game.");
+                    plugin.Players.remove(player);
+                    player.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.WHITE + " Left MurderMystery game.");
+                } else {
+                    player.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Command not found. Use /mm join or /mm leave to manage your participation.");
                 }
             } else {
-                player.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " Running MurderMystery version "+plugin.getDescription().getVersion()+" by MCUni.");
+                player.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.WHITE + " Running MurderMystery version "+plugin.getDescription().getVersion()+" by MCUni.");
             }
             return true;
         }

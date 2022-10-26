@@ -1,5 +1,7 @@
 package org.mcuni.murdermystery;
 
+import org.bukkit.entity.Player;
+
 import java.util.Random;
 
 public class SelectPlayers {
@@ -10,13 +12,17 @@ public class SelectPlayers {
         this.plugin = plugin;
     }
 
-    public String SelectDetective() {
+    public Player SelectDetective() {
         Random rand = new Random();
-        return plugin.Players.get(rand.nextInt(this.plugin.Players.size()));
+        Player selected = plugin.Players.get(rand.nextInt(this.plugin.Players.size()));
+        plugin.getLogger().info("[MurderMystery] Detective: "+selected.getName());
+        return selected;
     }
 
-    public String SelectMurderer() {
+    public Player SelectMurderer() {
         Random rand = new Random();
-        return plugin.Players.get(rand.nextInt(this.plugin.Players.size()));
+        Player selected = plugin.Players.get(rand.nextInt(this.plugin.Players.size()));
+        plugin.getLogger().info("[MurderMystery] Murderer: "+selected.getName());
+        return selected;
     }
 }
