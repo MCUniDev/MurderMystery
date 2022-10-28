@@ -38,6 +38,8 @@ public class StartGame {
 
         ItemStack itemStackD3 = new ItemStack(Material.SPECTRAL_ARROW);
         plugin.Detective.getInventory().addItem(itemStackD3);
+
+        plugin.GameRunning = true;
     }
 
     private void RestoreHealth() {

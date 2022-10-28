@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mcuni.murdermystery.commands.AdminCommands;
 import org.mcuni.murdermystery.commands.Commands;
+import org.mcuni.murdermystery.events.DropItems;
 import org.mcuni.murdermystery.events.PlayerDeath;
 import org.mcuni.murdermystery.events.PlayerQuit;
 
@@ -25,6 +26,7 @@ public final class Murdermystery extends JavaPlugin {
 
     public PlayerQuit PlayerQuitClass = new PlayerQuit(this);
     public PlayerDeath PlayerDeathClass = new PlayerDeath(this);
+    public DropItems DropItemsClass = new DropItems(this);
 
     @Override
     public void onEnable() {
@@ -39,6 +41,7 @@ public final class Murdermystery extends JavaPlugin {
     private void loadEventHandlers() {
         Bukkit.getServer().getPluginManager().registerEvents(PlayerQuitClass, this);
         Bukkit.getServer().getPluginManager().registerEvents(PlayerDeathClass, this);
+        Bukkit.getServer().getPluginManager().registerEvents(DropItemsClass, this);
         Bukkit.getLogger().info("[MurderMystery] Registered Event Handlers.");
     }
 
