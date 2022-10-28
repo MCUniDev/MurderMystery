@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.mcuni.murdermystery.EndGame;
 import org.mcuni.murdermystery.Murdermystery;
 import org.mcuni.murdermystery.SelectPlayers;
 import org.mcuni.murdermystery.StartGame;
@@ -68,6 +69,9 @@ public class AdminCommands implements CommandExecutor {
                         } else {
                             player.sendMessage(ChatColor.DARK_RED + "[MMA]" + ChatColor.RED + " There are not enough players to start a game.");
                         }
+                    } else if ("end".equals(args[0])) {
+                        EndGame eg = new EndGame(plugin);
+                        eg.Stop();
                     } else {
                         player.sendMessage(ChatColor.DARK_RED + "[MMA]" + ChatColor.RED + " Command not found.");
                     }

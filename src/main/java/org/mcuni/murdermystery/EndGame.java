@@ -16,20 +16,17 @@ public class EndGame {
     }
 
     public void Stop() {
+        plugin.GameRunning = false;
         for (Player player : plugin.Players) {
             ClearInventory(player);
+            RestoreHealth(player);
         }
-        RestoreHealth();
+        Bukkit.broadcastMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.WHITE + " The game has ended.");
     }
 
-    private void RestoreHealth() {
-        for (Player player : plugin.Players) {
-            player.setHealth(20);
-            player.setFoodLevel(20);
-
-            ItemStack itemStack = new ItemStack(Material.BREAD, 6);
-            player.getInventory().addItem(itemStack);
-        }
+    private void RestoreHealth(Player player) {
+        player.setHealth(20);
+        player.setFoodLevel(20);
     }
 
     public void ClearInventory(Player player) {

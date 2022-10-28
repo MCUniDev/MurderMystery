@@ -1,7 +1,6 @@
 /*
 TODO:
 - Player doesn't drop items on death.
-- New detective is selected IF there's enough players.
  */
 
 package org.mcuni.murdermystery;

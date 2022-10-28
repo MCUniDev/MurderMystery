@@ -20,16 +20,17 @@ public class PlayerQuit implements Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent player) {
-        try {
-            for (Player s : plugin.Players) {
-                if (Objects.equals(s, player.getPlayer().getName())) {
-                    plugin.Players.remove(player.getPlayer().getName());
-                    ClearInventory(s);
+        if (plugin.GameRunning) {
+            try {
+                for (Player s : plugin.Players) {
+                    if (Objects.equals(s, player.getPlayer().getName())) {
+                        plugin.Players.remove(player.getPlayer().getName());
+                        ClearInventory(s);
+                    }
                 }
+            } catch (Exception e) {
+                Bukkit.getLogger().severe("[MurderMystery] ERROR: There was a problem handling player disconnection.");
             }
-        }
-        catch (Exception e) {
-            Bukkit.getLogger().severe("[MurderMystery] ERROR: There was a problem handling player disconnection.");
         }
     }
 

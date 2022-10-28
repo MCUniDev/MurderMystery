@@ -24,25 +24,27 @@ public class PlayerDeath implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent player) {
-        try {
-            for (Player s : plugin.Players) {
-                if (Objects.equals(s, player.getPlayer().getName())) {
-                    plugin.Players.remove(player);
-                    ClearInventory(s);
-                    player.getPlayer().sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " You died.");
-                    if (s == plugin.Murderer) {
-                        EndGame eg = new EndGame(plugin);
-                        eg.Stop();
-                    }
-                    if (s == plugin.Detective) {
-                        StartGame sg = new StartGame(plugin);
-                        sg.NewDetective();
+        if (plugin.GameRunning) {
+            try {
+                for (Player s : plugin.Players) {
+                    if (Objects.equals(s, player.getPlayer().getName())) {
+                        plugin.Players.remove(player);
+                        ClearInventory(s);
+                        player.getPlayer().sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " You died.");
+                        if (s == plugin.Murderer) {
+                            EndGame eg = new EndGame(plugin);
+                            eg.Stop();
+                            Bukkit.broadcastMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.WHITE + " Detective and Innocents win!");
+                        }
+                        if (s == plugin.Detective) {
+                            StartGame sg = new StartGame(plugin);
+                            sg.NewDetective();
+                        }
                     }
                 }
+            } catch (Exception e) {
+                Bukkit.getLogger().severe("[MurderMystery] ERROR: There was a problem handling player disconnection.");
             }
-        }
-        catch (Exception e) {
-            Bukkit.getLogger().severe("[MurderMystery] ERROR: There was a problem handling player disconnection.");
         }
     }
 

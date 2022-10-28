@@ -64,15 +64,34 @@ public class StartGame {
         SelectPlayers sp = new SelectPlayers(plugin);
         boolean found = false;
         Player detective = null;
-        while (!found) {
-            if (detective == null) {
-                detective = sp.SelectDetective();
-                plugin.Detective = detective;
-                plugin.getLogger().info("[MurderMystery] DetectiveSearch: " + detective.getName());
-            } else {
-                found = true;
+        if (plugin.Players.size() > 2) {
+            while (!found) {
+                if (detective == null) {
+                    detective = sp.SelectDetective();
+                    plugin.Detective = detective;
+                    plugin.getLogger().info("[MurderMystery] DetectiveSearch: " + detective.getName());
+                } else if (detective != plugin.Murderer) {
+                    found = false;
+                    detective = null;
+                } else {
+                    found = true;
+                }
             }
+
+            ClearInventory(plugin.Detective);
+            ItemStack itemStackD1 = new ItemStack(Material.IRON_SWORD);
+            plugin.Detective.getInventory().addItem(itemStackD1);
+            ItemStack itemStackD2 = new ItemStack(Material.BOW);
+            plugin.Detective.getInventory().addItem(itemStackD2);
+            ItemStack itemStackD3 = new ItemStack(Material.SPECTRAL_ARROW);
+            plugin.Detective.getInventory().addItem(itemStackD3);
+
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " The detective has died. Someone else has been given the sword.");
+        } else {
+            Bukkit.broadcastMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " The detective has died. The Murderer wins!");
+            EndGame eg = new EndGame(plugin);
+            eg.Stop();
         }
-        Bukkit.broadcastMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.RED + " The detective has died. Someone else has been given the sword.");
+        plugin.Detective.sendMessage(ChatColor.DARK_RED + "[MM]" + ChatColor.WHITE + " You are the new " + ChatColor.BOLD + "Detective" + ChatColor.RESET + ChatColor.RED + ", you must kill the murderer and protect the innocents to win.");
     }
 }
